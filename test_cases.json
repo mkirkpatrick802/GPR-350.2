@@ -1,0 +1,22 @@
+{
+    "tests": [
+	{"fullname": "MovementTest.VariablesExistTest",
+         "points": 2},
+	{"fullname": "MovementTest.IntegratorTest",
+	 "points": 6},
+	{"fullname": "MovementTest.VelocityTest",
+         "points": 2},
+	{"fullname": "SceneTests.CameraTest",
+         "points": 1},
+	{"fullname": "SceneTests.LeftRotateTest",
+         "points": 2},
+	{"fullname": "SceneTests.RightRotateTest",
+         "points": 2},
+	{"fullname": "SceneTests.FireTest",
+         "points": 2},
+	{"fullname": "SceneTests.WeaponCycleTest",
+         "points": 6},
+	{"fullname": "SceneTests.WeaponCountTest",
+         "points": 1}
+    ]
+}
