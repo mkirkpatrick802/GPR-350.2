@@ -1,35 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] private Projectile[] projectiles;
+    [SerializeField] private Transform spawnpoint;
+    private int _projectileIndex;
+    private float _currentProjectileSpeed;
+
     /// <summary>
     /// The direction of the initial velocity of the fired projectile. That is,
     /// this is the direction the gun is aiming in.
     /// </summary>
-    public Vector3 FireDirection
-    {
-        get
-        {
-            // TODO: YOUR CODE HERE
-            return Vector3.zero;
-        }
-    }
+    public Vector3 FireDirection => spawnpoint.up;
 
     /// <summary>
     /// The position in world space where a projectile will be spawned when
     /// Fire() is called.
     /// </summary>
-    public Vector3 SpawnPosition
-    {
-        get
-        {
-            // TODO: YOUR CODE HERE
-            return Vector3.zero;
-        }
-    }
+    public Vector3 SpawnPosition => spawnpoint.position;
 
     /// <summary>
     /// The currently selected weapon object, an instance of which will be
@@ -39,8 +28,11 @@ public class Gun : MonoBehaviour
     {
         get
         {
-            // TODO: YOUR CODE HERE
-            return null;
+            Projectile scriptableObj = projectiles[_projectileIndex];
+            GameObject currentProjectile = projectiles[_projectileIndex].obj;
+            _currentProjectileSpeed = scriptableObj.speed;
+            currentProjectile.GetComponent<MeshRenderer>().material = scriptableObj.mat;
+            return projectiles[_projectileIndex].obj;
         }
     }
 
@@ -51,8 +43,7 @@ public class Gun : MonoBehaviour
     /// <returns>The newly created GameObject.</returns>
     public GameObject Fire()
     {
-        // TODO: YOUR CODE HERE
-        return null;
+        return GameObject.Instantiate(CurrentWeapon, SpawnPosition, Quaternion.identity);
     }
 
     /// <summary>
@@ -63,11 +54,35 @@ public class Gun : MonoBehaviour
     /// </summary>
     public void CycleNextWeapon()
     {
-        // TODO: YOUR CODE HERE
+        _projectileIndex++;
+        if (_projectileIndex > projectiles.Length - 1) _projectileIndex = 0;
     }
 
     void Update()
     {
-        // TODO: YOUR CODE HERE (handle all input in Update, not FixedUpdate!)
+        //Switch Projectile
+        if (Keyboard.current.wKey.wasPressedThisFrame)
+        {
+            CycleNextWeapon();
+        }
+        
+        //Rotate counter-clockwise
+        if (Keyboard.current.digit1Key.isPressed)
+        {
+            transform.Rotate(Vector3.forward, 0.25f);
+        }
+        
+        //Rotate clockwise
+        if (Keyboard.current.digit2Key.isPressed)
+        {
+            transform.Rotate(Vector3.forward, -0.25f);
+        }
+        
+        //Fire
+        if (Keyboard.current.enterKey.wasPressedThisFrame)
+        {
+            Particle2D particle = Fire().GetComponent<Particle2D>();
+            particle.velocity = FireDirection * _currentProjectileSpeed;
+        }
     }
 }
