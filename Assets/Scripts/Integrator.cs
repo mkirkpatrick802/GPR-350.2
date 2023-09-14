@@ -6,13 +6,13 @@ public static class Integrator
 {
     public static void Integrate(Particle2D particle2D, float dt)
     {
-        Transform partTransform = particle2D.transform;
-        Vector2 oldPos = partTransform.position;
-        Vector2 oldVelocity = particle2D.velocity;
-        
-        particle2D.velocity = new Vector2(oldVelocity.x + particle2D.gravity, oldVelocity.y + particle2D.gravity);
-        partTransform.position = new Vector3(oldPos.x + (particle2D.velocity.x * dt),oldPos.y + (particle2D.velocity.y * dt),0);
+        //particle2D.acceleration = Vector2.up * particle2D.gravity;
+        particle2D.transform.position += (Vector3)particle2D.velocity * dt;
         
         particle2D.velocity *= Mathf.Pow(particle2D.damping, dt);
+        particle2D.velocity += particle2D.acceleration * dt;
     }
 }
+
+//particle2D.acceleration += particle2D.accumulatedForces * particle2D.inverseMass;
+//particle2D.accumulatedForces = Vector2.zero;

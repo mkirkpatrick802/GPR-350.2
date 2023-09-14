@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Blue
   m_EditorClassIdentifier: 
   obj: {fileID: 8884174885331103408, guid: 1979970f487c9426688fdb3e1f7b5493, type: 3}
-  speed: 150
+  speed: 25
   mat: {fileID: 2100000, guid: 44413a374b23f314ab694ae081b8a9a0, type: 2}

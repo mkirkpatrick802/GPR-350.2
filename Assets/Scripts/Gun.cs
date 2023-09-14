@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] private Projectile[] projectiles;
-    [SerializeField] private Transform spawnpoint;
+    public Projectile[] projectiles;
+    public Transform spawnpoint;
     private int _projectileIndex;
     private float _currentProjectileSpeed;
 
