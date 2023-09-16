@@ -117,3 +117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  slingBack: 0
+  deadBrop: 0
+  flyer: 0
