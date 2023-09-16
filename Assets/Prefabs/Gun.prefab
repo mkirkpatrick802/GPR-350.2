@@ -78,8 +78,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ba0b372bc98401fab58065ac024675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectiles: []
-  spawnpoint: {fileID: 0}
+  projectiles:
+  - {fileID: 8884174885331103408, guid: 1979970f487c9426688fdb3e1f7b5493, type: 3}
+  - {fileID: 8884174885331103408, guid: f405e862e49e6bc46a22c5b1d12f93c8, type: 3}
+  - {fileID: 8884174885331103408, guid: 61c21819f2a8d7e41a8cec555b30bf9c, type: 3}
+  - {fileID: 8884174885331103408, guid: c12e76a2c9419ab47a6a65cba4deef65, type: 3}
+  spawnpoint: {fileID: 3840019523878462470}
 --- !u!23 &839008958913202466
 MeshRenderer:
   m_ObjectHideFlags: 0

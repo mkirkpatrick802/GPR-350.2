@@ -1,9 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Projectile", menuName = "ScriptableObjects/New Projectile", order = 1)]
-public class Projectile : ScriptableObject
+public class Projectile : MonoBehaviour
 {
-    public GameObject obj;
     public float speed;
-    public Material mat;
 }

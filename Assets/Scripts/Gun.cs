@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
 {
-    public Projectile[] projectiles;
+    public GameObject[] projectiles;
     public Transform spawnpoint;
     private int _projectileIndex;
     private float _currentProjectileSpeed;
@@ -28,11 +28,9 @@ public class Gun : MonoBehaviour
     {
         get
         {
-            Projectile scriptableObj = projectiles[_projectileIndex];
-            GameObject currentProjectile = projectiles[_projectileIndex].obj;
-            _currentProjectileSpeed = scriptableObj.speed;
-            currentProjectile.GetComponent<MeshRenderer>().material = scriptableObj.mat;
-            return projectiles[_projectileIndex].obj;
+            GameObject scriptableObj = projectiles[_projectileIndex];
+            _currentProjectileSpeed = scriptableObj.GetComponent<Projectile>().speed;
+            return scriptableObj;
         }
     }
 
@@ -43,7 +41,9 @@ public class Gun : MonoBehaviour
     /// <returns>The newly created GameObject.</returns>
     public GameObject Fire()
     {
-        return GameObject.Instantiate(CurrentWeapon, SpawnPosition, Quaternion.identity);
+        Particle2D particle = GameObject.Instantiate(CurrentWeapon, SpawnPosition, Quaternion.identity).GetComponent<Particle2D>();
+        particle.velocity = FireDirection * _currentProjectileSpeed;
+        return particle.gameObject;
     }
 
     /// <summary>
@@ -81,8 +81,7 @@ public class Gun : MonoBehaviour
         //Fire
         if (Keyboard.current.enterKey.wasPressedThisFrame)
         {
-            Particle2D particle = Fire().GetComponent<Particle2D>();
-            particle.velocity = FireDirection * _currentProjectileSpeed;
+            Fire();
         }
     }
 }

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8423461047832904371}
   - component: {fileID: 590648958440414130}
   - component: {fileID: 7480456240513016854}
-  - component: {fileID: -1666535991563578773}
+  - component: {fileID: -2463170018639108492}
   m_Layer: 0
-  m_Name: Particle
+  m_Name: Particle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   accumulatedForces: {x: 0, y: 0}
   inverseMass: 0
   gravity: -9.9
---- !u!114 &-1666535991563578773
+--- !u!114 &-2463170018639108492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,4 +116,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc04dc773459bd34abc53679358ba754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
